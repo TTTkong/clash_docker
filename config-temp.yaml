@@ -1,0 +1,6 @@
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: 0.0.0.0:9090 #外部控制端口，不要动，否则需要改动docker-compose.yaml文件
+

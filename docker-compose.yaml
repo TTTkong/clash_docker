@@ -1,0 +1,21 @@
+version: '2.1'
+services:
+  clash:
+    image: laoyutang/clash-and-dashboard:latest
+    container_name: clash
+    ports:
+      - 7771:8080 #网页管理端
+      - 9090:9090 #外部控制端
+      - 7775:7775
+      - 7776:7766
+      - 7777:7777
+    volumes:
+      - ./data/config.yaml:/root/.config/clash/config.yaml
+    restart: always # 容器随docker启动自启
+    
+    #限制容器日志文件大小
+    logging:
+      driver: "json-file" #默认的文件日志驱动
+      options:
+       max-file: "1"
+       max-size: "10m"
