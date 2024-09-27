@@ -4,12 +4,12 @@ services:
     image: laoyutang/clash-and-dashboard:latest
     container_name: clash
     ports:
-      - 7771:8080 #网页管理端
+      - 7888:8080 #网页管理端
       - 9090:9090 #外部控制端
+      #以下三个的常用的代理端口映射，到时间自己访问ui界面修改就可以，
       - 7890:7890
       - 7891:7891
       - 7892:7892
-      - 7777:7777
     volumes:
       - ./data/config.yaml:/root/.config/clash/config.yaml
     restart: always # 容器随docker启动自启
