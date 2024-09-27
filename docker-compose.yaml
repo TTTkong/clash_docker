@@ -6,8 +6,9 @@ services:
     ports:
       - 7771:8080 #网页管理端
       - 9090:9090 #外部控制端
-      - 7775:7775
-      - 7776:7766
+      - 7890:7890
+      - 7891:7891
+      - 7892:7892
       - 7777:7777
     volumes:
       - ./data/config.yaml:/root/.config/clash/config.yaml
