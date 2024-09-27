@@ -8,4 +8,4 @@ docker-compose up -d --force-recreate
 echo 以下是可能的ip地址或者公网地址
 ip addr
 
-echo 更新完毕
+echo 更新完毕，若失败请检查docker-compose是否安装
