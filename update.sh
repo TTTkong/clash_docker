@@ -16,3 +16,4 @@ echo 以下是可能的ip地址或者公网地址
 ip add | grep inet
 
 echo 更新完毕，若失败请检查docker-compose是否安装
+echo 默认的控制面板地址为ip:7888
