@@ -5,8 +5,8 @@ echo 将混合端口设置为7777，并开启允许局域网访问，若有需�
 sed -i '/mixed-port/d' data/config.yaml
 sed -i '/allow-lan/d' data/config.yaml
 
-sed -i '1 i \mixed-port: 7777\n' data/config.yaml
-sed -i '1 i \allow-lan: true\n' data/config.yaml
+sed -i '1 i \mixed-port: 7777' data/config.yaml
+sed -i '1 i \allow-lan: true' data/config.yaml
 
 echo 重启容器，刷新配置文件
 docker-compose down
