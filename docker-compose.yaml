@@ -10,6 +10,7 @@ services:
       - 7890:7890
       - 7891:7891
       - 7892:7892
+      - 7777:7777
     volumes:
       - ./data/config.yaml:/root/.config/clash/config.yaml
     restart: always # 容器随docker启动自启
