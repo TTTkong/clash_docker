@@ -1,12 +1,12 @@
 version: '2.1'
 services:
-  clash:
-    image: laoyutang/clash-and-dashboard:latest
-    container_name: clash
+  clashs:
+    image: laoyutang/clash-and-dashboard
+    container_name: clashs
     networks:
       - clash-all
     ports:
-      - 7888:8080 #网页管理端
+      - 7900:8080 #网页管理端
       - 9090:9090 #外部控制端
       #以下三个的常用的代理端口映射，到时间自己访问ui界面修改就可以，
       - 7890:7890
@@ -23,14 +23,15 @@ services:
       options:
        max-file: "1"
        max-size: "10m"
-
+       
+  ## 订阅链接转换合并后端
   subconverter:
-    image: tindy2013/subconverter:latest
+    image: tindy2013/subconverter
     container_name: subconverter
     networks:
       - clash-all
     ports:
-      - "15051:25500"
+      - "25500:25500"
     restart: always
 
     #限制容器日志文件大小
@@ -40,13 +41,22 @@ services:
        max-file: "1"
        max-size: "10m"
 
+  ## 订阅链接转换合并前端     
   subweb:
     image: stilleshan/subweb
     container_name: subweb
     networks:
       - clash-all
     ports:
-      - 18080:80
+      - 7902:80
+    restart: always # 容器随docker启动自启
+      
+      #限制容器日志文件大小
+    logging:
+      driver: "json-file" #默认的文件日志驱动
+      options:
+       max-file: "1"
+       max-size: "10m"
 
 networks:
   clash-all:
