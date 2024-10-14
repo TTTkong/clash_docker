@@ -1,43 +1,32 @@
 version: '2.1'
 services:
-  clashserver:
+  clashs:
     image: dreamacro/clash
-    container_name: clashserver
-    networks:
-      - clash-all
-    ports:
-      - 9090:9090 #外部控制端
-      #以下三个的常用的代理端口映射，到时间自己访问ui界面修改就可以，
-      - 7890:7890
-      - 7891:7891
-      - 7892:7892
-      - 7777:7777
+    container_name: clashs
+    networks_mode: host
+    # networks:
+    #   - clash-all
+    # ports:
+    #   - 9999:9999 #外部控制端
+    #   #以下三个的常用的代理端口映射，到时间自己访问ui界面修改就可以，
+    #   - 7890:7890
+    #   - 7891:7891
+    #   - 7892:7892
+    #   - 7777:7777
     volumes:
       - ./data/config.yaml:/root/.config/clash/config.yaml
     restart: always # 容器随docker启动自启
-    
-    #限制容器日志文件大小
-    logging:
-      driver: "json-file" #默认的文件日志驱动
-      options:
-       max-file: "1"
-       max-size: "10m"
 
   clashui:
     image: haishanh/yacd
     container_name: clashui
-    networks:
-      - clash-all
-    ports:
-      - 7900:80 #网页管理端
+    networks_mode: host
+    # networks:
+    #   - clash-all
+    # ports:
+    #   - 7900:80 #网页管理端
     restart: always # 容器随docker启动自启
   
-    #限制容器日志文件大小
-    logging:
-      driver: "json-file" #默认的文件日志驱动
-      options:
-        max-file: "1"
-        max-size: "10m"
 
   # ## 订阅链接转换合并后端
   # subconverter:
@@ -73,5 +62,5 @@ services:
   #      max-file: "1"
   #      max-size: "10m"
 
-networks:
-  clash-all:
+# networks:
+#   clash-all:

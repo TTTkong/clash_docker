@@ -6,7 +6,7 @@ mixed-port: 7890
 allow-lan: false
 mode: "rule"
 log-level: "info"
-external-controller: "127.0.0.1:9999"
+external-controller: "0.0.0.0:9999"
 dns:
   enable: true
   listen: "0.0.0.0:53"
