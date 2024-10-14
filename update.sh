@@ -1,7 +1,7 @@
 echo 获取配置文件，默认的免费链接容易失效，建议自己寻找免费订阅进行聚合。
 # 本地订阅链接转换服务获取，免费链接获取地址为  https://github.com/VPN-Subcription-Links/ClashX-V2Ray-TopFreeProxy
 # 以下指令自行替换链接
-# wget -O ./data/config.yaml https://tt.vg/freeclash #随时可能挂，建议自己找链接
+wget -O ./data/config.yaml https://tt.vg/freeclash #随时可能挂，建议自己找链接
 # wget -O ./data/config.yaml "https://git.io/emzclash" #随时可能挂，建议自己找链接
 echo 将混合端口设置为7777，并开启允许局域网访问，若有需求请自行修改docker-compose和data/config.yaml文件
 # sed -i '/mixed-port/d' ./data/config.yaml
