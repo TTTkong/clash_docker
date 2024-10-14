@@ -15,7 +15,10 @@
 # 其他
 - 关于镜像配置，可以看 https://github.com/LaoYutang/clash-and-dashboard
 - 关于镜像下载不了，可以看 https://github.com/sky22333/Docker-Hub
-- 关于地址，可以看 https://github.com/VPN-Subcription-Links/ClashX-V2Ray-TopFreeProxy
+- 关于订阅地址，可以看
+    - 首选https://github.com/ermaozi/get_subscribe 
+    - https://github.com/VPN-Subcription-Links/ClashX-V2Ray-TopFreeProxy
+
 嫌弃内存占用，可以使用在线的subweb前端，或者在获取聚合链接后，将前端服务关闭
 ```sudo docker-compose down subweb```
 

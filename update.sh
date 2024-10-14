@@ -2,7 +2,7 @@ echo 获取配置文件，默认的免费链接容易失效，建议自己寻找
 # 本地订阅链接转换服务获取，免费链接获取地址为  https://github.com/VPN-Subcription-Links/ClashX-V2Ray-TopFreeProxy
 # 以下指令自行替换链接
 # wget -O ./data/config.yaml https://tt.vg/freeclash #随时可能挂，建议自己找链接
-wget -O ./data/config.yaml "http://127.0.0.1:25500/sub?target=clash&url=https%3A%2F%2Ftt.vg%2Ffreeclash%7Chttps%3A%2F%2Ffreenode.openrunner.net%2Fuploads%2F20240617-clash.yaml%7Chttps%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fvxiaov%2Ffree_proxies%40main%2Fclash%2Fclash.provider.yaml%7Chttps%3A%2F%2Fraw.githubusercontent.com%2Fermaozi%2Fget_subscribe%2Fmain%2Fsubscribe%2Fclash.yml%7Chttps%3A%2F%2Fnodefree.org%2Fdy%2F2024%2F07%2F20240725.yaml%7Chttps%3A%2F%2Fraw.githubusercontent.com%2Fmfuu%2Fv2ray%2Fmaster%2Fclash.yaml%7Chttps%3A%2F%2Fraw.githubusercontent.com%2Fanaer%2FSub%2Fmain%2Fclash.yaml%7Chttps%3A%2F%2Fgithub.com%2Fzu1k%2Fproxypool%2Freleases" #随时可能挂，建议自己找链接
+wget -O ./data/config.yaml "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/clash.yml" #随时可能挂，建议自己找链接
 echo 将混合端口设置为7777，并开启允许局域网访问，若有需求请自行修改docker-compose和data/config.yaml文件
 sed -i '/mixed-port/d' data/config.yaml
 sed -i '/allow-lan/d' data/config.yaml
