@@ -1,61 +1,57 @@
 version: '2.1'
 services:
-  # clashs:
-  #   image: dreamacro/clash
-  #   container_name: clashs
-  #   networks:
-  #     - clash-all
-  #   ports:
-  #     - 9090:9090 #外部控制端
-  #     #以下三个的常用的代理端口映射，到时间自己访问ui界面修改就可以，
-  #     - 7890:7890
-  #     - 7891:7891
-  #     - 7892:7892
-  #     - 7777:7777
-  #   volumes:
-  #     - ./data/config.yaml:/root/.config/clash/config.yaml
-  #   restart: always # 容器随docker启动自启
+  clashs:
+    image: dreamacro/clash
+    container_name: clashs
+    networks:
+      - clash-all
+    ports:
+      - 9090:9090 #外部控制端
+      #以下三个的常用的代理端口映射，到时间自己访问ui界面修改就可以，
+      - 7890:7890
+      - 7891:7891
+      - 7892:7892
+      - 7777:7777
+    volumes:
+      - ./data/config.yaml:/root/.config/clash/config.yaml
+    restart: always # 容器随docker启动自启
   
-  # clashui:
-  #   container_name: clashui
-  #   # image: ghcr.io/haishanh/yacd
-  #   image: haishanh/yacd
-  #   networks:
-  #     - clash-all
-  #   ports:
-  #     - 7900:80
-  #   restart: always # 容器随docker启动自启
+  clashui:
+    container_name: clashui
+    # image: ghcr.io/haishanh/yacd
+    image: haishanh/yacd
+    networks:
+      - clash-all
+    ports:
+      - 7900:80
+    restart: always # 容器随docker启动自启
 
   # 订阅链接转换合并后端
   subconverter:
     image: tindy2013/subconverter
     container_name: subconverter
-    # network_mode: host
-    networks:
-      clash-all:
+    network_mode: host
     dns:
       - 127.0.0.1
-    ports:
-      - "25500:25500"
-    volumes:
-      - ./data/pref.toml:/base/pref.toml
+      - 223.5.5.5
+    # networks:
+      # clash-all:
+    # ports:
+      # - "25500:25500"
+    # volumes:
+      # - ./data/pref.toml:/base/pref.toml
     restart: always
 
-  # ## 订阅链接转换合并前端     
-  # subweb:
-  #   image: stilleshan/subweb
-  #   container_name: subweb
-  #   networks:
-  #     - clash-all
-  #   ports:
-  #     - 7902:80
-  #   restart: always # 容器随docker启动自启
+  ## 订阅链接转换合并前端     
+  subweb:
+    image: stilleshan/subweb
+    container_name: subweb
+    networks:
+      - clash-all
+    ports:
+      - 7902:80
+    restart: always # 容器随docker启动自启
       
 networks:
   clash-all:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.18.0.0/24
-        - gateway: 172.18.0.1
 
