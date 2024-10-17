@@ -9,7 +9,7 @@ sleep 10
 
 echo 通过接口链接更新订阅
 # 以下指令自行替换链接
-wget -O ./data/config.yaml https://tt.vg/freeclash #随时可能挂，建议自己找链接
+wget -O ./data/config.yaml "https://tt.vg/freeclash" #随时可能挂，建议自己找链接
 echo 将混合端口设置为7777，并开启允许局域网访问，若有需求请自行修改docker-compose和data/config.yaml文件（保证端口映射正确）
 sed -i '/mixed-port/d' ./data/config.yaml
 sed -i '/allow-lan/d' ./data/config.yaml
