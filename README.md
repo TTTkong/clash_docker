@@ -7,8 +7,9 @@
 - 安装必要软件
     - git 
     - docker-compose和docker，一般用包管理器就可以，也可以自己百度
-    - fastgithub  保证订阅链接的正常访问，默认使用这种方式，如使用自己的代理请手动在docker-compose.yaml和data/pref.toml中修改并注释
-        https://github.com/WangGithubUser/FastGithub/releases
+    - fastgithub  
+        保证订阅链接的正常访问，默认使用这种方式，请根据此项目部署https://github.com/WangGithubUser/FastGithub/releases
+        如使用自己的代理请手动在docker-compose.yaml和data/pref.toml中修改并注释       
 
 - 下载项目并进入文件夹
 ```

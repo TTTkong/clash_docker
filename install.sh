@@ -1,4 +1,5 @@
 cp config-temp.yaml ./data/config.yaml
+docker-compose up -d
 echo 以下是可能的ip地址或者公网地址
 ip add | grep inet
 
