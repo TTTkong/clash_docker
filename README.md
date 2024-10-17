@@ -10,7 +10,7 @@
     - fastgithub  保证订阅链接的正常访问，默认使用这种方式，如使用自己的代理请手动在docker-compose.yaml和data/pref.toml中修改并注释
         https://github.com/WangGithubUser/FastGithub/releases
 
-- 下载项目
+- 下载项目并进入文件夹
 ```
 git clone https://github.com/TTTkong/clash_docker.git
 cd clash_docker
@@ -35,8 +35,9 @@ crontab -e
 ```
 在文件在追加一行
 ```
-cd /root/clash_docker/ && bash update.sh
+0 3 * * * cd /root/clash_docker/ && bash update.sh
 ```
+每天凌晨3点更新
 其中cd命令接上你的项目存放路径
 
 
@@ -45,9 +46,12 @@ cd /root/clash_docker/ && bash update.sh
 链接直接获取的config.yaml可能用不了（clash的控制端没显示），就需要sub进行转换
 
 # 注意事项
-更新脚本执行失败，一般是因为网络环境问题。请检查fastgithub是否正常运行。
+- 更新脚本执行失败
+一般是因为网络环境问题。请检查fastgithub是否正常运行。
 排除后仍失败，也可以将update.sh的sleep 10的时间设置长一点，等待sub后端完全启动。
 
+- 脚本执行失败
+设置好执行权限，比如 `chmod a+x update.sh`
 
 # 其他
 - 关于镜像配置，可以看 https://github.com/LaoYutang/clash-and-dashboard
