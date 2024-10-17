@@ -26,7 +26,7 @@ cd clash_docker
 
 - 初始化安装
 ```
-./install.sh
+sudo ./install.sh
 ```
 此操作将启动全部服务，具体端口请在docker-compose.yaml文件中查看
 
@@ -34,7 +34,7 @@ cd clash_docker
 准备好订阅链接。并在 update.sh 中修改。也可以是由订阅转换后的聚合链接。
 
 ```
-./update.sh
+sudo ./update.sh
 ```
 此操作将关闭sub后端和前端服务，仅保留clash和clashui服务
 执行后进入clash-ui容器的网页端，查看是否正常。
@@ -55,7 +55,7 @@ crontab -e
 # 卸载
 在项目文件夹下运行
 ```
-docker-compose down
+sudo docker-compose down
 ```
 # 注意事项
 - 更新脚本执行失败
