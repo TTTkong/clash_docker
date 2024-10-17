@@ -14,7 +14,7 @@ services:
       - 7777:7777
     volumes:
       - ./data/config.yaml:/root/.config/clash/config.yaml
-    restart: always # 容器随docker启动自启
+    restart: always 
   
   clashui:
     container_name: clashui
@@ -24,25 +24,32 @@ services:
       - clash-all
     ports:
       - 7900:80
-    restart: always # 容器随docker启动自启
+    restart: always 
 
-  # 订阅链接转换合并后端
+  # 订阅链接转换合并后端,端口为25500
   subconverter:
     image: tindy2013/subconverter
     container_name: subconverter
+
+    #《使用fastgithub需要设置此dns，且必须在host模式下
     network_mode: host
     dns:
-      - 127.0.0.1
-      - 223.5.5.5
+      - 127.0.0.1   
+    #使用fastgithub需要设置此dns，且必须在host模式下》
+    
+
+    ##自己设置代理则建议使用此设置，记得修改./data/pref.toml文件
     # networks:
       # clash-all:
     # ports:
       # - "25500:25500"
     # volumes:
       # - ./data/pref.toml:/base/pref.toml
+    ##自己设置代理则建议使用此设置，记得修改./data/pref.toml文件
+
     restart: always
 
-  ## 订阅链接转换合并前端     
+  ## 生成指向后端的订阅转换链接，访问链接后，在update脚本中默认关闭此服务
   subweb:
     image: stilleshan/subweb
     container_name: subweb
@@ -50,7 +57,7 @@ services:
       - clash-all
     ports:
       - 7902:80
-    restart: always # 容器随docker启动自启
+    restart: always
       
 networks:
   clash-all:

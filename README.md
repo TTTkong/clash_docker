@@ -1,16 +1,53 @@
-# docker项目合计
-自己部署的 docker 项目文件夹，看得懂可以拿去用，debian12
+# 简介
+自己部署的 docker 项目文件夹，看得懂可以拿去用。目前在debian12、n1盒子上测试成功。
 包含clash核心、clash-ui控制、订阅链接转换后端subconverter、订阅链接转换前端subweb
 
-# 初始化
-执行install.sh、启动全部服务
-# 更新
-## 单订阅更新
-直接修改update.sh里面的链接为你的订阅地址
 
-## 多订阅合并更新
-通过sub订阅链接转换服务将多个链接合并成聚合链接（姑且这么叫），web地址为ip:7902
-将update.sh里面的链接替换为这个聚合链接（必须保证sub后端服务开启）
+# 部署
+- 安装必要软件
+    - git 
+    - docker-compose和docker，一般用包管理器就可以，也可以自己百度
+    - fastgithub  保证订阅链接的正常访问，默认使用这种方式，如使用自己的代理请手动在docker-compose.yaml和data/pref.toml中修改并注释
+        https://github.com/WangGithubUser/FastGithub/releases
+
+- 下载项目
+```
+git clone https://github.com/TTTkong/clash_docker.git
+cd clash_docker
+```
+
+
+- 初始化安装
+```
+./install.sh
+```
+此操作将启动全部服务，具体端口请在docker-compose.yaml文件中查看
+
+- 定时更新
+准备好订阅链接。并在 update.sh 中修改。也可以是由订阅转换后的聚合链接。
+
+```
+./update.sh
+```
+执行后进入clash-ui容器的网页端，查看是否正常。
+```
+crontab -e
+```
+在文件在追加一行
+```
+cd /root/clash_docker/ && bash update.sh
+```
+其中cd命令接上你的项目存放路径
+
+
+# 多订阅合并更新
+通过sub订阅链接转换服务将多个链接合并成聚合链接（姑且这么叫），subweb地址为ip:7902
+链接直接获取的config.yaml可能用不了（clash的控制端没显示），就需要sub进行转换
+
+# 注意事项
+更新脚本执行失败，一般是因为网络环境问题。请检查fastgithub是否正常运行。
+排除后仍失败，也可以将update.sh的sleep 10的时间设置长一点，等待sub后端完全启动。
+
 
 # 其他
 - 关于镜像配置，可以看 https://github.com/LaoYutang/clash-and-dashboard
@@ -19,12 +56,10 @@
     - 首选https://github.com/ermaozi/get_subscribe 
     - https://github.com/VPN-Subcription-Links/ClashX-V2Ray-TopFreeProxy
 
-嫌弃内存占用，可以使用在线的subweb前端，或者在获取聚合链接后，将前端服务关闭
-```sudo docker-compose down subweb```
-
 
 
 # 感谢
 https://github.com/tindy2013/subconverter
 https://github.com/stilleshan/subweb
 https://github.com/LaoYutang/clash-and-dashboard
+https://github.com/WangGithubUser/FastGithub
