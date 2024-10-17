@@ -1,7 +1,4 @@
 echo 确保自己填入了正确的订阅链接
-# 以下指令自行替换链接
-# wget -O ./data/config.yaml https://tt.vg/freeclash #随时可能挂，建议自己找链接
-# wget -O ./data/config.yaml "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/clash.yml" #随时可能挂，建议自己找链接
 echo 重启subconverter
 docker-compose down
 docker-compose up -d subconverter
@@ -11,7 +8,8 @@ sleep 10
 
 
 echo 通过接口链接更新订阅
-wget -O ./data/config.yaml "http://127.0.0.1:25500/sub?target=clash&url=https%3A%2F%2Fraw.githubusercontent.com%2Fermaozi%2Fget_subscribe%2Fmain%2Fsubscribe%2Fclash.yml" #随时可能挂，建议自己找链接
+# 以下指令自行替换链接
+wget -O ./data/config.yaml https://tt.vg/freeclash #随时可能挂，建议自己找链接
 echo 将混合端口设置为7777，并开启允许局域网访问，若有需求请自行修改docker-compose和data/config.yaml文件（保证端口映射正确）
 sed -i '/mixed-port/d' ./data/config.yaml
 sed -i '/allow-lan/d' ./data/config.yaml
@@ -21,7 +19,7 @@ sed -i '/secret:/d' ./data/config.yaml
 sed -i '1a mixed-port: 7777' ./data/config.yaml
 sed -i '1a allow-lan: true' ./data/config.yaml
 sed -i '1a external-controller: "0.0.0.0:9090"' ./data/config.yaml
-sed -i '1a secret: "17825651004@Yan"' ./data/config.yaml
+# sed -i '1a secret: "password"' ./data/config.yaml   # 设置密码
 
 
 echo 关闭subconverter，重启clashs和clashui刷新配置文件

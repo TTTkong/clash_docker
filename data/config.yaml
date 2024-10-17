@@ -1,0 +1,6 @@
+mixed-port: 7777
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: 0.0.0.0:9090 # 不要改，否则需要改动docker配置
+

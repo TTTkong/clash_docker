@@ -31,11 +31,11 @@ services:
     image: tindy2013/subconverter
     container_name: subconverter
 
-    #《使用fastgithub需要设置此dns，且必须在host模式下
+    ###使用fastgithub的配置，需要设置此dns，且必须在host模式下
     network_mode: host
     dns:
       - 127.0.0.1   
-    #使用fastgithub需要设置此dns，且必须在host模式下》
+    #############自己注释或者取消注释
     
 
     ##自己设置代理则建议使用此设置，记得修改./data/pref.toml文件
@@ -45,7 +45,7 @@ services:
       # - "25500:25500"
     # volumes:
       # - ./data/pref.toml:/base/pref.toml
-    ##自己设置代理则建议使用此设置，记得修改./data/pref.toml文件
+    ##########自己注释或者取消注释
 
     restart: always
 

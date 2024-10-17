@@ -16,6 +16,12 @@ git clone https://github.com/TTTkong/clash_docker.git
 cd clash_docker
 ```
 
+- 配置文件
+    - docker-compose.yaml
+    - data/config.yaml
+    - data/pref.toml
+    - update.sh  每次更新会修改config.yaml文件，设置外部访问密码必须在此设置
+
 
 - 初始化安装
 ```
@@ -29,6 +35,7 @@ cd clash_docker
 ```
 ./update.sh
 ```
+此操作将关闭sub后端和前端服务，仅保留clash和clashui服务
 执行后进入clash-ui容器的网页端，查看是否正常。
 ```
 crontab -e
